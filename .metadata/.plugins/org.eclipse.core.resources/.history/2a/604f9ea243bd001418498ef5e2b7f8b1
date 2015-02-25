@@ -1,0 +1,14 @@
+
+public class GameObject {
+	private char[] coord = new char[2];
+
+	public GameObject(String coord) {
+		this.coord[0] = coord.charAt(0);
+		this.coord[1] = coord.charAt(1);
+	}
+	
+	public char[] getCoord() {
+		return coord;
+	}
+
+}

@@ -1,0 +1,12 @@
+
+public class Ships extends GameObject{
+	
+	private boolean orientation;
+	private	int 	length;
+	
+	public Ships(String coord,boolean orientation,int length){
+		super(coord);
+		this.orientation = orientation;
+		this.length = length;
+	}
+}
