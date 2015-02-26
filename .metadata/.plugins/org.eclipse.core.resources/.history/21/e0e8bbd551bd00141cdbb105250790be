@@ -5,16 +5,15 @@ public class Ships extends GameObject{
 	private	int 	length;
 	private ShipSection[] ship;
 
+	private char symbol2,
+				symbol3;
+	
 	public Ships(String coord,boolean orientation,int length){
 		super(coord);
 		this.orientation = orientation;
 		this.length = length;
-		this.ship[0] = new ShipSection("",1,this.orientation);
-		for (int i = 0; i < this.length - 2; i++) {
-			this.ship[i + 1] = new ShipSection("",i + 2,this.orientation);
-		}
-		this.ship[this.length - 1] = new ShipSection("",this.length,this.orientation);
-
+		this.setSymbol(this.orientation);
+		
 	}
 
 	public boolean getOrientation() {
@@ -25,11 +24,18 @@ public class Ships extends GameObject{
 		return length;
 	}
 	
-
-
-	public ShipSection[] getShip() {
-		return this.ship;
+	public void setSymbol(boolean orientation) {
+		if (orientation) {
+			this.symbol = '<';
+			this.symbol2 = '=';
+			this.symbol3 = '>';
+		} else { // Check for Unicode values
+			this.symbol = '<';
+			this.symbol2 = '=';
+			this.symbol3 = '>';
+		}
 	}
-	
+
+
 
 }

@@ -1,0 +1,14 @@
+
+public class ShipSection {
+
+	private int location;
+	
+	public ShipSection(int location) {
+		this.location = location;
+	}
+	
+	public void getLocation() {
+		return this.location;
+	}
+	
+}

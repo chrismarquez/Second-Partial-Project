@@ -5,6 +5,7 @@ public class Ships extends GameObject{
 	private	int 	length;
 	private ShipSection[] ship;
 
+
 	public Ships(String coord,boolean orientation,int length){
 		super(coord);
 		this.orientation = orientation;
@@ -30,6 +31,6 @@ public class Ships extends GameObject{
 	public ShipSection[] getShip() {
 		return this.ship;
 	}
-	
+
 
 }

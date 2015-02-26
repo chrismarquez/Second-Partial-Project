@@ -1,0 +1,15 @@
+
+public class ShipSection extends GameObject{
+
+	private int location;
+	
+	public ShipSection(String coords, int location) {
+		super(coords);
+		this.location = location;
+	}
+	
+	public int getLocation() {
+		return this.location;
+	}
+	
+}
