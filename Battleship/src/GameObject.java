@@ -12,8 +12,8 @@ public class GameObject {
 		return coord;
 	}
 	
-	public char[] getSymbol(){
-		char[] value = {this.symbol};
-		return value;
+	public char getSymbol(){
+		return this.symbol;
 	}
+	
 }

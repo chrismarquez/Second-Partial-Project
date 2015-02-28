@@ -1,0 +1,61 @@
+
+public class Battleship {
+	
+	public static void printGridLine(int line) {
+		String textLine = " ";
+		switch(line) {
+			case 1:				
+				textLine += "╔";
+				for(int i = 0; i < 9; i++) {
+					textLine += " ╦";
+				}
+				textLine += " ╗";
+				System.out.println(textLine);
+				break;
+			case 2:
+				textLine += "║";
+				for(int i = 0; i < 9; i++) {
+					textLine += " ╬";
+				}
+				textLine += " ║";
+				System.out.println(textLine);
+				break;
+			case 3:
+				textLine += "╚";
+				for(int i = 0; i < 9; i++) {
+					textLine += " ╩";
+				}
+				textLine += " ╝";
+				System.out.println(textLine);
+		}
+	}
+	
+	public static void printGrid(Grid grid) {
+		printGridLine(1);
+		printSymbols(1,10,1,grid);
+		for (int i = 2; i < 10; i++) {
+			printGridLine(2);
+			printSymbols(1,10,i,grid);
+		}
+		printGridLine(3);
+		printSymbols(1,10,10,grid);
+	}
+	
+	public static void printSymbols(int x,int y,int row, Grid grid) {
+		String field = " ";
+		for (int i = x - 1; i < y; i++) {
+			field += " " + grid.getGrid()[row - 1][i].getSymbol();
+		}
+	}
+
+	public static void main(String[] args) {
+		UserGrid User = new UserGrid();
+		PCGrid PC = new PCGrid();
+		
+		do {  //Game Loop
+			printGrid(User);
+		} while (false);
+
+	}
+
+}

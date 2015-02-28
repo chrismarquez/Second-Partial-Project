@@ -1,0 +1,17 @@
+
+public class ShipSection extends GameObject{
+
+	private int location;
+	private int shipLength;
+	
+	public ShipSection(String coords, int location, boolean orientation) {
+		super(coords);
+		this.location = location;
+		this.symbol = 'b';
+	}
+	
+	public int getLocation() {
+		return this.location;
+	}
+	
+}

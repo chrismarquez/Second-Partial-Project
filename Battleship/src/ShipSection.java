@@ -1,32 +1,21 @@
 
 public class ShipSection extends GameObject{
 
-	private int location;
-	private int shipLength;
+	private int location; //Starts to count from ship origin
+	private int length;
 	
 	public ShipSection(String coords, int location, boolean orientation) {
 		super(coords);
 		this.location = location;
-		setSymbol(this.location, orientation);		
+		this.symbol = 'b';
 	}
 	
 	public int getLocation() {
 		return this.location;
 	}
 	
-	private void setSymbol(int location, boolean orientation) {
-		if(this.location == 1) {
-			if (orientation) {
-				this.symbol = '<';
-			}
-		} else if (this.location == this.shipLength) {				
-			if (orientation) {
-				this.symbol = '=';
-				}
-		} else {
-			if (orientation) {
-				this.symbol = '>';
-				}
-		}
+	public int getLength() {
+		return this.length;
 	}
+	
 }

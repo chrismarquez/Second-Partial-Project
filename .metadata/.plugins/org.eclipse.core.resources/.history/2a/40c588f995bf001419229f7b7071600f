@@ -1,0 +1,10 @@
+
+public class Battleship {
+
+	public static void main(String[] args) {
+		
+		UserGrid User = new Usergrid();
+
+	}
+
+}
