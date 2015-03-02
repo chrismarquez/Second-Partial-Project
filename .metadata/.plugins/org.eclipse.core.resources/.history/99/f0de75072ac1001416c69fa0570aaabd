@@ -1,0 +1,19 @@
+
+public class Battleship {
+
+	public static void main(String[] args) {
+		UserGrid user = new UserGrid();
+		PCGrid PC = new PCGrid();
+		
+		do {  //Game Loop
+			user.setGameObject(new Ships(3,5,true,3));
+			user.setGameObject(new Ships(4,0,false,5));
+			System.out.println("Your Board");
+			user.printGrid();
+			System.out.println("PC Board");
+			PC.printGrid();
+		} while (false);
+
+	}
+
+}

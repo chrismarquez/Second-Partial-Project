@@ -62,24 +62,30 @@ public class Grid {
 		printGridLine(3);
 	}
 
-	public void setGameObject (GameObject gameObject){
+	public boolean setGameObject (GameObject gameObject){
 		if(gameObject instanceof Ships){
+			if(!isValid((Ships) gameObject)) {
+				return false;
+			}
 			if(((Ships) gameObject).getOrientation()){
-				for (int i = 0; i < gameObject.getLength(); i++) {
-					this.grid[gameObject.getShip()[0].getCoord()[0]][gameObject.getShip()[i].getCoord()[1]] = gameObject.getShip()[i];
+				for (int i = 0; i < ((Ships) gameObject).getLength(); i++) {
+					this.grid[((Ships) gameObject).getShip()[0].getCoord()[0]][((Ships) gameObject).getShip()[i].getCoord()[1]] = ((Ships) gameObject).getShip()[i];
 					//Get the coordinate from the ShipSection from the ShipSection Array from the object
 				}
 			} else {
-				for (int i = 0; i < gameObject.getLength(); i++) {
-					this.grid[gameObject.getShip()[i].getCoord()[0]][gameObject.getShip()[0].getCoord()[1]] = gameObject.getShip()[i];
+				for (int i = 0; i < ((Ships) gameObject).getLength(); i++) {
+					this.grid[((Ships) gameObject).getShip()[i].getCoord()[0]][((Ships) gameObject).getShip()[0].getCoord()[1]] = ((Ships) gameObject).getShip()[i];
 					//Get the coordinate from the ShipSection from the ShipSection Array from the object
 				}
 			}
 			
 		} else {
-		this.grid[gameObject.getCoord()[0]][gameObject.getCoord()[1]] = gameObject;
+			this.grid[gameObject.getCoord()[0]][gameObject.getCoord()[1]] = gameObject;
 		}
+		
+		return true;
 	}
+
 	
 	public int getGameObject (GameObject gameObject){
 		int typeObject =0;
@@ -94,6 +100,20 @@ public class Grid {
 		}
 		
 		return typeObject;
+	}
+	
+	public boolean isValid(Ships ship) {
+		boolean orientation = ship.getOrientation();
+		if(orientation) {
+		if(ship.getLength() + ship.getCoord()[1] <= 10) {
+				return true;
+			}
+		} else {
+			if(ship.getLength() + ship.getCoord()[0] <= 10) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 }
