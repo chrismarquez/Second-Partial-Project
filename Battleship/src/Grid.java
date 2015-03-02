@@ -61,5 +61,24 @@ public class Grid {
 		printSymbols(1,10,10);
 		printGridLine(3);
 	}
+
+	public void setGameObject (GameObject gameObject){
+		this.grid[gameObject.getCoord()[0]][gameObject.getCoord()[1]] = gameObject;
+	}
+	
+	public int getGameObject (GameObject gameObject){
+		int typeObject =0;
+		if (gameObject instanceof ShipSection){
+			typeObject= 1;
+		}
+		else if (gameObject instanceof Shots || gameObject instanceof Explosion){
+			typeObject= 2;
+		}
+		else if (gameObject instanceof Blank){
+			typeObject= 3;
+		}
+		
+		return typeObject;
+	}
 	
 }
