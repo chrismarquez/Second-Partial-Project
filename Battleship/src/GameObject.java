@@ -2,6 +2,8 @@
 public class GameObject {
 	protected int[] coord = new int[2];
 	protected char symbol;
+	protected int length;
+	protected ShipSection[] ship;
 
 	public GameObject(int row, int column) {
 		this.coord[0] = row;
@@ -14,6 +16,14 @@ public class GameObject {
 	
 	public char getSymbol(){
 		return this.symbol;
+	}
+	
+	public int getLength(){
+		return this.length;
+	}
+	
+	public ShipSection[] getShip() {
+		return this.ship;
 	}
 	
 }

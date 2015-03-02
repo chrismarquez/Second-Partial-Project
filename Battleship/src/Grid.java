@@ -63,7 +63,22 @@ public class Grid {
 	}
 
 	public void setGameObject (GameObject gameObject){
+		if(gameObject instanceof Ships){
+			if(((Ships) gameObject).getOrientation()){
+				for (int i = 0; i < gameObject.getLength(); i++) {
+					this.grid[gameObject.getShip()[0].getCoord()[0]][gameObject.getShip()[i].getCoord()[1]] = gameObject.getShip()[i];
+					//Get the coordinate from the ShipSection from the ShipSection Array from the object
+				}
+			} else {
+				for (int i = 0; i < gameObject.getLength(); i++) {
+					this.grid[gameObject.getShip()[i].getCoord()[0]][gameObject.getShip()[0].getCoord()[1]] = gameObject.getShip()[i];
+					//Get the coordinate from the ShipSection from the ShipSection Array from the object
+				}
+			}
+			
+		} else {
 		this.grid[gameObject.getCoord()[0]][gameObject.getCoord()[1]] = gameObject;
+		}
 	}
 	
 	public int getGameObject (GameObject gameObject){
