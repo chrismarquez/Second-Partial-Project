@@ -5,24 +5,36 @@ public class Ships extends GameObject{
 	private	int 	length;
 	private ShipSection[] ship;
 
-	public Ships(String coord,boolean orientation,int length){
-		super(coord);
+	public Ships(int row, int column, boolean orientation,int length){
+		super(row,column);
 		this.orientation = orientation;
 		this.length = length;
-		this.ship[0] = new ShipSection("",1,this.orientation);
-		for (int i = 0; i < this.length - 2; i++) {
-			this.ship[i + 1] = new ShipSection("",i + 2,this.orientation);
-		}
-		this.ship[this.length - 1] = new ShipSection("",this.length,this.orientation);
+		setSectionCoords(this.orientation);
 
+	}
+	
+	private void setSectionCoords(boolean orientation) {
+		if(orientation) {
+			this.ship[0] = new ShipSection(this.coord[0],this.coord[1],1,this.orientation);
+			for (int i = 0; i < this.length - 2; i++) {
+				this.ship[i + 1] = new ShipSection(this.coord[0],this.coord[1] + i,i + 2,this.orientation);
+			}
+			this.ship[this.length - 1] = new ShipSection(coord[0],coord[1] + this.length,this.length,this.orientation);
+		} else {
+			this.ship[0] = new ShipSection(this.coord[0],this.coord[1],1,this.orientation);
+			for (int i = 0; i < this.length - 2; i++) {
+				this.ship[i + 1] = new ShipSection(this.coord[0] + i,this.coord[1],i + 2,this.orientation);
+			}
+			this.ship[this.length - 1] = new ShipSection(coord[0] + this.length,coord[1] + this.length,this.length,this.orientation);
+		}
 	}
 
 	public boolean getOrientation() {
-		return orientation;
+		return this.orientation;
 	}
 
 	public int getLength() {
-		return length;
+		return this.length;
 	}
 	
 

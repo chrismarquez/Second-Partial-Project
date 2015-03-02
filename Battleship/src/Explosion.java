@@ -2,8 +2,8 @@
 public class Explosion extends GameObject{
 	
 
-	public Explosion (String coord) {
-		super(coord);
+	public Explosion (int row, int column) {
+		super(row, column);
 		this.symbol = '*';
 	}
 	

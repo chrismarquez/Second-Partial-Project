@@ -5,9 +5,9 @@ public class Grid {
 	
 	public Grid() {
 		this.grid = new GameObject[10][10];
-		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < 10; j++) {
-				this.grid[i][j] = new Blank(Integer.toString(i)+Integer.toString(j));
+		for (int i = 0; i < this.grid.length; i++) {
+			for (int j = 0; j < this.grid[i].length; j++) {
+				this.grid[i][j] = new Blank(i,j);
 			}
 		}
 	}

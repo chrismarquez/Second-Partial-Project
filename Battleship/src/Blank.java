@@ -1,8 +1,8 @@
 
 public class Blank extends GameObject{
 
-	public Blank (String coord) {
-		super(coord);
+	public Blank (int row, int column) {
+		super(row, column);
 		this.symbol = ' ';
 	}
 	

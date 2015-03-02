@@ -1,14 +1,14 @@
 
 public class GameObject {
-	protected char[] coord = new char[2];
+	protected int[] coord = new int[2];
 	protected char symbol;
 
-	public GameObject(String coord) {
-		this.coord[0] = coord.charAt(0);
-		this.coord[1] = coord.charAt(1);
+	public GameObject(int row, int column) {
+		this.coord[0] = row;
+		this.coord[1] = column;
 	}
 	
-	public char[] getCoord() {
+	public int[] getCoord() {
 		return coord;
 	}
 	
