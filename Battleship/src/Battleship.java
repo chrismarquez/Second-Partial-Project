@@ -7,7 +7,9 @@ public class Battleship {
 		
 		do {  //Game Loop
 			user.setGameObject(new Ships(3,5,true,3));
-			user.setGameObject(new Ships(0,0,false,5));
+			user.setGameObject(new Ships(7,0,false,5));
+			PC.setGameObject(new Explosion(6,7));
+			PC.setGameObject(new Ships(2,4,true,4));
 			System.out.println("Your Board");
 			user.printGrid();
 			System.out.println("PC Board");

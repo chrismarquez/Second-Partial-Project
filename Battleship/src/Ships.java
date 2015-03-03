@@ -4,11 +4,12 @@ public class Ships extends GameObject{
 	private boolean orientation;
 	private int length;
 	private ShipSection[] ship;
+	private int HP;
 
 	public Ships(int row, int column, boolean orientation,int length){
 		super(row,column);
 		this.orientation = orientation;
-		this.length = length;
+		this.HP = this.length = length;
 		this.ship = new ShipSection[this.length];
 		setSectionCoords(this.orientation);
 
@@ -41,6 +42,14 @@ public class Ships extends GameObject{
 	
 	public ShipSection[] getShip() {
 		return this.ship;
+	}
+	
+	public void decreaseHP() {
+		this.HP--;
+	}
+	
+	public int getHP() {
+		return this.HP;
 	}
 	
 
