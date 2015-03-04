@@ -1,7 +1,7 @@
 
 public class Grid {
 
-	protected GameObject[][] grid; // Hosts all game objects on the grid
+	private GameObject[][] grid; // Hosts all game objects on the grid
 	public Ships[] aliveShips; // Hosts all alive ships on the grid
 	
 	public Grid() { //Constructs a new grid and fills it with Blank game objects.
@@ -100,7 +100,6 @@ public class Grid {
 		else if (gameObject instanceof Blank){
 			typeObject= 3;
 		}
-		
 		return typeObject;
 	}
 	
@@ -128,14 +127,14 @@ public class Grid {
 		return false;
 	}
 	
-	public boolean attackShip(int row, int column, Grid grid){
+	public boolean attackShip(int row, int column, Grid grid){//Ataca al barco enemigo
 		boolean attempt = true;
 		
-		if(grid.getGameObject(this.grid[row][column]) == 1){
+		if(grid.getGameObject(grid.getGrid()[row][column]) == 1){
 			attempt = true;
 			grid.setGameObject(new Explosion(row, column));
 		}
-		else if(grid.getGameObject(this.grid[row][column]) ==  2){
+		else if(grid.getGameObject(grid.getGrid()[row][column]) ==  2){
 			attempt = false;
 		}
 		else{
@@ -145,6 +144,12 @@ public class Grid {
 		
 		return attempt;
 	}
+	
+	public GameObject[][] getGrid(){//Obtiene el valor de los atributos deseados
+		
+		return this.grid;
+	}
+
 }
 
 

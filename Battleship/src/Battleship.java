@@ -14,15 +14,6 @@ public class Battleship {
 			//User ataca a PC
 			user.attackPC(PC);
 			
-			//Ejemplos pasados
-			user.setGameObject(new Ships(3,5,true,3));
-			user.setGameObject(new Ships(0,0,false,5));
-			PC.setGameObject(new Explosion(6,7));
-			PC.setGameObject(new Ships(2,4,true,4));
-			user.setGameObject(new Ships(0,0,false,5));
-			user.setGameObject(new Shots(0,0));
-			user.setGameObject(new Explosion(1,1));
-			
 			System.out.println("Your Board");
 			user.printGrid();
 			System.out.println("PC Board");
