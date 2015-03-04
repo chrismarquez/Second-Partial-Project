@@ -6,8 +6,8 @@ public class UserGrid extends Grid{
 		super();
 	}
 	
-	private int coordReader(String coord){ //Interpreta los valores de row (A,B...)
-		
+	
+	private int rowReader(String coord){ //Interpreta los valores de row (A,B... J)
 		int rowCoord = 0;
 		if (coord.charAt(0) == 'a' || coord.charAt(0) =='A'){
 			rowCoord= 0;
@@ -40,63 +40,110 @@ public class UserGrid extends Grid{
 			rowCoord=  9;
 		}
 		else{
-			JOptionPane.showMessageDialog(null, "Invalid Coordenate!");
-			coord= JOptionPane.showInputDialog("Intenta de nuevo");
-			coordReader(coord);
+			rowCoord= -1;
 		}
 		return rowCoord;
 	}
 	
+	
+	public int columnReader(String coord){//Interpreta los valores de column (1,2... 10)
+		int column = (Character.getNumericValue(coord.charAt(1)));
+		if(column != 1){
+			return column;
+		}
+		
+		else{
+			if(coord.length() == 2){
+				return column;
+			}else if (Character.getNumericValue(coord.charAt(2)) == 0){
+				return 10;
+			}else{
+				return -1;
+			}
+		}
+	}
 
+	
 	public void setShipsInUserGrid(){//Instancia los 5 barcos del usuario
 		JOptionPane.showMessageDialog(null, "Es momento de ordenar tus barcos");
 		for (int i=0; i<2; i++){
 			//Obtiene la coordenada del barco
 			String coord = JOptionPane.showInputDialog("Inserta la coordenada del barco "+(i+1));
-			int row = this.coordReader(coord);
-			int column = (Character.getNumericValue(coord.charAt(1))-1);
-			
-			JOptionPane.showMessageDialog(null, "Tu coordenada es: "+row+", "+column);
-			
-			
-			//Obtiene su orientación
-			boolean orientation;
-			String orientationStr =  JOptionPane.showInputDialog("Inserta su orientación");
-			if(orientationStr.equals("horizontal")){
-				orientation = true;
-			}
-			else{
-				orientation = false;
+			int row =0;
+			int column=0;
+			//Valida la coordenada
+			if (coord.length() == 2 || coord.length() == 3){
+				row = this.rowReader(coord);
+				column = (this.columnReader(coord)-1);
+			}else{
+				JOptionPane.showMessageDialog(null, "Coordenada inválida. Intenta de nuevo.");
+				this.setShipsInUserGrid();
 			}
 			
-			//Crea el barco #i con los inputs recibidos
-			Ships ship = new Ships(row, column, orientation, 5-i);
-			this.setGameObject(ship);
-			this.addShip(ship);
-			System.out.println("Your Board");
+			if(!this.isValidCoord(row, column, this)){
+				JOptionPane.showMessageDialog(null, "Coordenada inválida. Intenta de nuevo.");
+				this.setShipsInUserGrid();
+			}else{
+				//Obtiene su orientación
+				boolean orientation =false;
+				String orientationStr =  JOptionPane.showInputDialog("Inserta su orientación");
+				if(orientationStr.equals("horizontal")){
+					orientation = true;
+				}
+				else if (orientationStr.equals("vertical")){
+					orientation = false;
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "Orientación inválida. Intenta de nuevo.");
+					this.setShipsInUserGrid();
+				}
+				
+				//Crea el barco #i con los inputs recibidos
+				Ships ship = new Ships(row, column, orientation, 5-i);
+				this.setGameObject(ship);
+				this.addShip(ship);
+				
+				//Muestra tu mapa para ver que barcos haz puesto
+				System.out.println("Your Board");
+				this.printGrid();
+			}
 			
-			//Muestra tu mapa para ver que barcos haz puesto
-			this.printGrid();
 		}
 	}
 
 	
 	public void attackPC(Grid grid){//Realizas un ataque al enemigo
 		JOptionPane.showMessageDialog(null, "Es hora de atacar!");
+		
+		//Recibe la coordenada
 		String coord = JOptionPane.showInputDialog("Inserta la coordenada del ataque");
-		int row = this.coordReader(coord);
-		int column = (Character.getNumericValue(coord.charAt(1))-1);
-		
-		
-		if (this.attackShip(row, column, grid)){
-			JOptionPane.showMessageDialog(null, "Nice shot! Le haz dado a uno de sus barcos");
-		} else{
-			JOptionPane.showMessageDialog(null, "Uyyy! Haz fallado! Suerte a la próxima");
+		int row =0;
+		int column=0;
+		//Valida la coordenada
+		if (coord.length() == 2 || coord.length() == 3){
+			row = this.rowReader(coord);
+			column = (this.columnReader(coord)-1);
+		}else{
+			JOptionPane.showMessageDialog(null, "Coordenada inválida. Intenta de nuevo.");
+			this.attackPC(grid);
 		}
-		System.out.println("PC Board");
-		grid.printGrid();
+		if(this.isValidCoord(row, column, grid)){			
+			//Realiza el ataque
+			if (this.attackShip(row, column, grid)){
+				JOptionPane.showMessageDialog(null, "Nice shot! Le haz dado a uno de sus barcos");
+			} else{
+				JOptionPane.showMessageDialog(null, "Uyyy! Haz fallado! Suerte a la próxima");
+			}
+			System.out.println("PC Board");
+			grid.printGrid();
+		} 
+		
+		else{
+			JOptionPane.showMessageDialog(null, "Coordenada inválida. Intenta de nuevo.");
+			this.attackPC(grid);
+			
+		}
 	}
-
 
 }
 
