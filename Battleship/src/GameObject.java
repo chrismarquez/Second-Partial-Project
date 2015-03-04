@@ -8,6 +8,10 @@ public class GameObject {
 		this.coord[1] = column;
 	}
 	
+	public GameObject(int[] coord){
+		this.coord = coord;
+	}
+	
 	public int[] getCoord() {
 		return coord;
 	}

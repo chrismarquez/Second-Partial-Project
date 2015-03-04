@@ -1,0 +1,14 @@
+import javax.swing.JOptionPane;
+
+
+public class PCGrid extends Grid{
+
+	
+	public PCGrid() {
+		super();
+	}
+	
+	public void setShipsInUserGrid(){//Inicializa los 5 barcos de la PC aleatoriamente
+		
+	}
+}

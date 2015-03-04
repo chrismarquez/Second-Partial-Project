@@ -1,0 +1,45 @@
+
+public class UserGrid extends Grid{
+
+	public UserGrid() {
+		super();
+	}
+	
+	public int coordReader(String coord){
+		if (coord.charAt(0) == 'a'){
+			return 0;
+		}
+		else if (coord.charAt(0) == 'b'){
+			return 1;
+		}
+		else if (coord.charAt(0) == 'c'){
+			return 2;
+		}
+		else if (coord.charAt(0) == 'd'){
+			return 3;
+		}
+		else if (coord.charAt(0) == 'e'){
+			return 4;
+		}
+		else if (coord.charAt(0) == 'f'){
+			return 5;
+		}
+		else if (coord.charAt(0) == 'g'){
+			return 6;
+		}
+		else if (coord.charAt(0) == 'h'){
+			return 7;
+		}
+		else if (coord.charAt(0) == 'i'){
+			return 8;
+		}
+		else if (coord.charAt(0) == 'j'){
+			return 9;
+		}
+		else{
+			System.out.println("Invalid X Coordenate");
+			return -1;
+		}
+	}
+	
+}
