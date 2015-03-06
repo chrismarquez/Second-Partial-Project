@@ -21,11 +21,11 @@ public class Battleship {
 			user.attackPC(PC);
 			PC.attackUser(user);
 			
-			
+			System.out.println("Your Board");
+			user.printGrid();
 			System.out.println("Resultado final...");
 			System.out.println("");
 			PC.printGrid();
-			System.out.println("");
 			user.printGrid();
 		} while (false);
 
