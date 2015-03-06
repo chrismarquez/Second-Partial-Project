@@ -122,27 +122,32 @@ public class UserGrid extends Grid{
 	}
 	
 	
-	public void setShipsInUserGrid(){//Instancia los 4 barcos del usuario
+	public void setShipsInUserGrid(){//Instancía los 4 barcos del usuario
 		JOptionPane.showMessageDialog(null, "Es momento de ordenar tus barcos.");
 		for (int i=0; i<4; i++){
-			//Recibe y valida coordenada del barco
-			String coord = JOptionPane.showInputDialog("Inserta la coordenada del "+this.shipsName(5-i));
-			coord = this.isValidInput(coord, this);
-			int row = this.rowReader(coord);
-			int column = (this.columnReader(coord)-1);
-			
-			//Recibe y valida orientación
-			String orientationStr =  JOptionPane.showInputDialog("Inserta su orientación");
-			boolean orientation = this.isValidOrientation(orientationStr);
-			
-			//Crea el barco #i con los inputs recibidos
-			Ships ship = new Ships(row, column, orientation, 5-i);
-			this.setGameObject(ship);
-			this.addShip(ship);
+			boolean flag = false;
+			do {
+				//Recibe y valida coordenada del barco
+				String coord = JOptionPane.showInputDialog("Inserta la coordenada del "+this.shipsName(5-i));
+				coord = this.isValidInput(coord, this);
+				int row = this.rowReader(coord);
+				int column = (this.columnReader(coord)-1);
 				
-			//Muestra tu mapa para ver que barcos haz puesto
-			System.out.println("Your Board");
-			this.printGrid();
+				//Recibe y valida orientación
+				String orientationStr =  JOptionPane.showInputDialog("Inserta su orientación");
+				boolean orientation = this.isValidOrientation(orientationStr);
+				
+				//Crea el barco #i con los inputs recibidos
+				Ships ship = new Ships(row, column, orientation, 5-i);
+				flag = this.setGameObject(ship);
+				if (!flag) {
+					JOptionPane.showMessageDialog(null, "Coordenadas Inválidas. Intenta de nuevo");
+				}
+					
+				//Muestra tu mapa para ver que barcos has puesto
+				System.out.println("Your Board");
+				this.printGrid();
+			} while(!flag);
 		}
 			
 	}

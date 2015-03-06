@@ -1,0 +1,34 @@
+
+public class Battleship {
+
+	public static void main(String[] args) {
+		UserGrid user = new UserGrid();
+		PCGrid PC = new PCGrid();
+		
+		do {  //Game Loop
+			
+			//Inicializa el juego, obteniendo los barcos del usuario
+			user.setShipsInUserGrid();
+			PC.setShipsInPcGrid();
+			
+			//Empieza la batalla!
+			user.attackPC(PC);
+			PC.attackUser(user);
+
+			user.attackPC(PC);
+			PC.attackUser(user);
+
+			user.attackPC(PC);
+			PC.attackUser(user);
+			
+			
+			System.out.println("Resultado final...");
+			System.out.println("");
+			PC.printGrid();
+			System.out.println("");
+			user.printGrid();
+		} while (false);
+
+	}
+
+}

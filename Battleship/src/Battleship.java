@@ -21,6 +21,11 @@ public class Battleship {
 			user.attackPC(PC);
 			PC.attackUser(user);
 			
+			for(int i = 0; i < 4; i++) {
+				System.out.println(PC.getAliveShips()[i].getHP());	
+			}
+			
+			
 			
 			System.out.println("Resultado final...");
 			System.out.println("");

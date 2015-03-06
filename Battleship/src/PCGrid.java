@@ -11,28 +11,29 @@ public class PCGrid extends Grid{
 	
 	public void setShipsInPcGrid(){//PC situa sus 4 barcos
 		JOptionPane.showMessageDialog(null, "Tu enemigo está ordenando sus barcos.");
-		
-		for (int i=0; i<2; i++){
-			//Genera la coordenada
-			
-			Random randomInt = new Random();
-			int row = (randomInt.nextInt(10-(5-i)));
-			int column = (randomInt.nextInt(10-(5-i)));
-			System.out.println("Row: "+row+", Column: "+column);
-			
-			//Recibe y valida orientación
-			Random randomBoolean = new Random();
-			boolean orientation = (randomBoolean.nextBoolean());
-			System.out.println("Orientation: "+orientation);
-			
-			//Crea el barco #i con los inputs recibidos
-			Ships ship = new Ships(row, column, orientation, 5-i);
-			this.setGameObject(ship);
-			this.addShip(ship);
+		boolean flag = false;
+		for (int i=0; i<4; i++){
+			do {
+				//Genera la coordenada
 				
-			//Muestra el mapa para ver que barcos haz puesto
-			System.out.println("PC Board");
-			this.printGrid();
+				Random randomInt = new Random();
+				int row = (randomInt.nextInt(10-(5-i)));
+				int column = (randomInt.nextInt(10-(5-i)));
+				System.out.println("Row: "+row+", Column: "+column);
+				
+				//Recibe y valida orientación
+				Random randomBoolean = new Random();
+				boolean orientation = (randomBoolean.nextBoolean());
+				System.out.println("Orientation: "+orientation);
+				
+				//Crea el barco #i con los inputs recibidos
+				Ships ship = new Ships(row, column, orientation, 5-i);
+				flag = this.setGameObject(ship);
+					
+				//Muestra el mapa para ver que barcos haz puesto
+				System.out.println("PC Board");
+				this.printGrid();
+			} while(!flag);
 		}
 	}
 	
