@@ -1,0 +1,14 @@
+import java.util.Random;
+
+public class PCGrid extends Grid{
+
+	
+	public PCGrid() {
+		super();
+	}
+	
+	public void setShipsInPcGrid(){
+		int row = 0;
+	}
+	
+}

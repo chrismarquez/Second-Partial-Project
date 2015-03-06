@@ -1,0 +1,22 @@
+import java.util.Random;
+
+public class PCGrid extends Grid{
+
+	
+	public PCGrid() {
+		super();
+	}
+	
+	public void setShipsInPcGrid(){
+		Random random = new Random();
+		int row = (random.nextInt() * 10);
+		int column = (random.nextInt() * 10);
+	}
+	
+	public void attackUser(Grid grid){
+		Random random = new Random();
+		int row = (random.nextInt() * 10);
+		int column = (random.nextInt() * 10);
+		
+	}
+}

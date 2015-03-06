@@ -1,0 +1,15 @@
+import java.util.Random;
+
+public class PCGrid extends Grid{
+
+	
+	public PCGrid() {
+		super();
+	}
+	
+	public void setShipsInPcGrid(){
+		Random random = new Random();
+		(rnd.nextInt() * 10);
+	}
+	
+}

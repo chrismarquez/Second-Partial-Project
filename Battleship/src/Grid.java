@@ -14,7 +14,6 @@ public class Grid {
 		}
 	}
 	
-	
 	private void printGridLine(int line) {// Do not touch this. //Prints an empty grid to the screen.
 		String textLine = " ";
 		switch(line) {
