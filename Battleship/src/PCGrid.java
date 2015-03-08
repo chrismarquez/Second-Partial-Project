@@ -27,7 +27,7 @@ public class PCGrid extends Grid{
 				System.out.println("Orientation: "+orientation);
 				
 				//Crea el barco #i con los inputs recibidos
-				Ships ship = new Ships(row, column, orientation, 5-i);
+				Ships ship = new Ships(row, column, orientation, 5-i, false);
 				flag = this.setGameObject(ship);
 					
 				//Muestra el mapa para ver que barcos haz puesto
@@ -45,7 +45,7 @@ public class PCGrid extends Grid{
 		int row = (randomInt.nextInt(10));
 		int column = (randomInt.nextInt(10));
 		
-		JOptionPane.showMessageDialog(null, "El enemigo ha disparado en "+this.coordTranslator(row, column)+"!");
+		JOptionPane.showMessageDialog(null, "El enemigo ha disparado en "+this.coordTranslator(row, column + 1)+"!");
 				
 		if (this.attackShip(row, column, grid)){
 			JOptionPane.showMessageDialog(null, "Chale! Te han dañado!");

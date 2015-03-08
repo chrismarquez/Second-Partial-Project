@@ -144,23 +144,23 @@ public class Grid {
 	public boolean attackShip(int row, int column, Grid grid){//Ataca al barco enemigo
 		boolean attempt = true;
 		
-		if(grid.getGameObject(grid.getGrid()[row][column]) == 1) {
+		if(grid.getGameObject(grid.getGrid()[row][column]) == 1) { // If the object found is a ShipSection
 			attempt = true;
-			for (int i = 0; i < grid.getAliveShips().length; i++) {
-				System.out.println("i: " + i);
-				for (int j = 0; j < grid.getAliveShips()[i].getShip().length; j++) {
-					System.out.println("j: " + j);
-					if (grid.getAliveShips()[i].getShip()[j] instanceof ShipSection) {
-						if (grid.getAliveShips()[i].getShip()[j].getCoord()[0] == grid.getGrid()[row][column].getCoord()[0] && grid.getAliveShips()[i].getShip()[j].getCoord()[1] == grid.getGrid()[row][column].getCoord()[1]) {
-							grid.getAliveShips()[i].decreaseHP();
-							grid.getAliveShips()[i].getShip()[j] = null;  //Cannot
+			for (int i = 0; i < grid.getAliveShips().length; i++) { //Check every alive ship
+				if ( grid.getAliveShips()[i] instanceof Ships) {
+					for (int j = 0; j < grid.getAliveShips()[i].getShip().length; j++) { //Check the ship section on a alive ship
+						if (grid.getAliveShips()[i].getShip()[j] instanceof ShipSection) {
+							if (grid.getAliveShips()[i].getShip()[j].getCoord()[0] == grid.getGrid()[row][column].getCoord()[0] && grid.getAliveShips()[i].getShip()[j].getCoord()[1] == grid.getGrid()[row][column].getCoord()[1]) { //If the coords of the ship on the grid and the one on AliveShips match
+								grid.getAliveShips()[i].decreaseHP(); 
+								grid.getAliveShips()[i].getShip()[j] = null;  //Bye bye ShipSection
+							}
 						}
 					}
 				}
 			}
-			grid.setGameObject(new Explosion(row, column));
+			grid.setGameObject(new Explosion(row, column)); //Kabooooom
 		}
-		else if(grid.getGameObject(grid.getGrid()[row][column]) ==  2){
+		else if(grid.getGameObject(grid.getGrid()[row][column]) ==  2){ // If it is either an explosion or missed shot
 			attempt = false;
 		}
 		else{
